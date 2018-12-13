@@ -1,6 +1,6 @@
 const { solve } = require('./Sock_Merchant');
 
-describe('361.1', () => {
+describe('Sock_Merchant', () => {
   it('should solve default example 1', () => {
     expect(solve(7, [1, 2, 1, 2, 1, 3, 2])).toBe(2);
   });
