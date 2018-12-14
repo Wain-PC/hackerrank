@@ -1,14 +1,14 @@
 const solve = (n, queries) => {
-  const arr = {};
-  queries.forEach(([start, end, sum]) => {
-    for (let i = start - 1; i < end; i++) {
-      if (!arr[i]) {
-        arr[i] = 0;
-      }
-      arr[i] += sum;
-    }
+  const arr = Array(n).fill(0);
+  queries.forEach(([s, e, sum]) => {
+    arr[s - 1] += sum;
+    arr[e] -= sum;
   });
-  return Object.values(arr).reduce((max, v) => (v > max ? v : max), -Infinity);
+  let tmp = 0;
+  return arr.reduce((sum, v) => {
+    tmp += v;
+    return (tmp > sum) ? tmp : sum;
+  }, 0);
 };
 
 module.exports = { solve };
