@@ -1,4 +1,4 @@
-const { solve } = require('./Flipping Bits');
+const { solve, solveBitwise } = require('./Flipping Bits');
 
 describe('Flipping Bits', () => {
   const examples = [
@@ -21,6 +21,7 @@ describe('Flipping Bits', () => {
   examples.forEach(({ query, answer }, i) => {
     it(`should solve example ${i}`, () => {
       expect(solve(query)).toEqual(answer);
+      expect(solveBitwise(query)).toEqual(answer);
     });
   });
 });
