@@ -37,11 +37,14 @@ const solve = (queries) => {
     // Step 2. Invalidate the hash.
     keys.forEach((person) => { people[person].visited = false; });
 
-    // Step 3. Walk over each person and calculate graph length
-    const circles = keys.map(walk);
-
     // Step 4. Select max graph length of the current step.
-    maxCircles.push(Math.max(...circles));
+    maxCircles.push(
+      Math.max(
+        walk(p1),
+        walk(p2),
+        maxCircles.length ? maxCircles[maxCircles.length - 1] : 0,
+      ),
+    );
   });
 
   return maxCircles;
