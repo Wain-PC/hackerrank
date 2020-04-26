@@ -1,59 +1,53 @@
-const memo = fn => (a, b) => {
-  const cache = new Map();
-  const key = `${a}|${b}`;
+/* eslint-disable brace-style */
 
-  if (!cache.has(key)) {
-    cache.set(key, fn(a, b));
+const solve = (str, substr) => {
+  const sl = str.length;
+  const ssl = substr.length;
+
+  // Step 1. Prepare a Dynamic Programming Array.
+  // Fill everything with false.
+  const T = Array.from(Array(sl + 1), () => new Array(ssl + 1).fill(false));
+
+  // Step 2. Fill zero-indexes of the array
+  // If we compare empty strings we should return true (obviously).
+  T[0][0] = true;
+
+  // If substr is empty, we can return true until there're no uppercase characters in the string.
+  let hasUppercase = false;
+  for (let i = 1; i <= ssl; i++) {
+    hasUppercase = hasUppercase || (str[i - 1].toUpperCase() === str[i - 1]);
+    T[i][0] = !hasUppercase;
   }
 
-  return cache.get(key);
-};
+  // Actually traverse DP array and calculate all the values.
+  for (let i = 1; i <= sl; i++) {
+    const charStr = str[i - 1];
+    for (let j = 1; j <= ssl; j++) {
+      const charSubstr = substr[j - 1];
 
-const check = memo((str, substr) => {
-  // If both strings are empty, we found a solution!
-  // If only str is empty, its an immediate 'false'.
-  if (!str.length) {
-    return !substr.length;
-  }
+      // Case 1. Uppercase match: must take.
+      if (charStr === charSubstr) {
+        T[i][j] = T[i - 1][j - 1];
+      }
 
-  // Return true only if every character left in the original string is lowercase
-  if (!substr.length) {
-    return str.toLowerCase() === str;
-  }
+      // Case 2. Lowercase match. Can either take or skip.
+      else if (charStr.toUpperCase() === charSubstr) {
+        T[i][j] = T[i - 1][j - 1] || T[i - 1][j];
+      }
 
-  // If substr is longer than original string, return false.
-  if (substr.length > str.length) {
-    return false;
-  }
+      // Case 3. Lowercase no match: must skip.
+      else if ((charStr.toUpperCase() !== charStr) && charStr.toUpperCase() !== charSubstr) {
+        T[i][j] = T[i - 1][j];
+      }
 
-  // Now compare first letters
-  const strChar = str[0];
-  const substrChar = substr[0];
-
-  // Case 1. Uppercase match - great, only single option here. Move on deeper with recursion.
-  if (strChar === substrChar) {
-    return check(str.slice(1), substr.slice(1));
-  }
-
-  // Case 2. Lowercase match. 2 options here. We can take it or skip it
-  if (strChar.toUpperCase() === substrChar) {
-    // Take it
-    if (check(str.slice(1), substr.slice(1))) {
-      return true;
+      // Case 4. Uppercase no match: must return false.
+      else {
+        T[i][j] = false;
+      }
     }
-    // or skip it.
-    return check(str.slice(1), substr);
   }
 
-  // Case 3. Uppercase no match - immediate false;
-  if (strChar.toUpperCase() === strChar) {
-    return false;
-  }
-
-  // Case 4. Lowercase no match - skip.
-  return check(str.slice(1), substr);
-});
-
-const solve = (str, subStr) => (check(str, subStr) ? 'YES' : 'NO');
+  return T[sl][ssl] ? 'YES' : 'NO';
+};
 
 module.exports = { solve };
