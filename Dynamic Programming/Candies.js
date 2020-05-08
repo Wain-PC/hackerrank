@@ -1,12 +1,4 @@
-const memo = fn => (index) => {
-  const cache = new Map();
-
-  if (!cache.has(index)) {
-    cache.set(index, fn(index));
-  }
-
-  return cache.get(index);
-};
+/* eslint-disable brace-style */
 
 const solve = (children) => {
   if (!children.length) {
@@ -15,28 +7,35 @@ const solve = (children) => {
 
   const candies = [];
 
-  const getCandies = memo((index) => {
+  const getCandies = (index) => {
     if (index < 0 || index >= children.length) {
       return 0;
     }
+
+    if (candies[index]) {
+      return candies[index];
+    }
+
     // If it's a local maximum, we should take max of left and right and increase it by 1.
     if ((children[index] > children[index - 1]) && (children[index] > children[index + 1])) {
-      return Math.max(candies[index - 1], getCandies(index + 1)) + 1;
+      candies[index] = Math.max(candies[index - 1], getCandies(index + 1)) + 1;
     }
 
     // Decreasing trend. Current should be 1 more than next.
-    if (children[index] > children[index + 1]) {
-      return getCandies(index + 1) + 1;
+    else if (children[index] > children[index + 1]) {
+      candies[index] = getCandies(index + 1) + 1;
     }
 
     // Increasing trend. Current should 1 more than previous.
-    if (children[index] > children[index - 1]) {
-      return candies[index - 1] + 1;
+    else if (children[index] > children[index - 1]) {
+      candies[index] = candies[index - 1] + 1;
+    } else {
+      candies[index] = 1;
     }
 
     // Local minimum or same value as previous. Should always return 1.
-    return 1;
-  });
+    return candies[index];
+  };
 
 
   return children.reduce((acc, value, index) => {

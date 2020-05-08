@@ -1,4 +1,5 @@
 const { solve } = require('./Candies');
+const { array } = require('../utils/file');
 
 describe('Candies', () => {
   const examples = [
@@ -39,5 +40,10 @@ describe('Candies', () => {
     it(`should solve example ${i}`, () => {
       expect(solve(query)).toEqual(answer);
     });
+  });
+
+  it('should solve example 11', async () => {
+    const arr = await array('./Dynamic Programming/input11.txt');
+    expect(solve(arr)).toEqual(5000050000);
   });
 });
