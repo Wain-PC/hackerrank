@@ -8,6 +8,11 @@ describe('Largest Rectangle', () => {
       answer: 9,
     },
 
+    {
+      query: [3, 2, 5, 6, 1, 4, 4],
+      answer: 10,
+    },
+
   ];
 
   examples.forEach(({ query, answer }, i) => {
