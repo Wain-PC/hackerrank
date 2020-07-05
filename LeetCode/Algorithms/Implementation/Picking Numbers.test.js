@@ -1,4 +1,4 @@
-const { solve } = require('./Picking Numbers');
+const { solve, solveObj } = require('./Picking Numbers');
 
 describe('Picking Numbers', () => {
   const examples = [
@@ -28,6 +28,7 @@ describe('Picking Numbers', () => {
   examples.forEach(({ query, answer }, i) => {
     it(`should solve example ${i}`, () => {
       expect(solve(query)).toEqual(answer);
+      expect(solveObj(query)).toEqual(answer);
     });
   });
 });

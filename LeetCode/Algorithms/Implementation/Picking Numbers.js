@@ -30,4 +30,28 @@ const solve = (input) => {
   return maxLength;
 };
 
-module.exports = { solve };
+const solveObj = (input) => {
+  const obj = input.reduce((acc, n) => {
+    if (!acc[n]) {
+      acc[n] = 0;
+    }
+    acc[n]++;
+
+    return acc;
+  }, {});
+
+  return Object.keys(obj).reduce((max, key) => {
+    const current = obj[key];
+    const prev = obj[key - 1] || 0;
+    const next = obj[key + 1] || 0;
+    const maxPair = Math.max(current, current + prev, current + next);
+
+    if (maxPair > max) {
+      return maxPair;
+    }
+
+    return max;
+  }, 0);
+};
+
+module.exports = { solve, solveObj };
