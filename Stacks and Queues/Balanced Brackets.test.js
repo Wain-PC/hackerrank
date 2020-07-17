@@ -1,23 +1,21 @@
-const { solve } = require('./Balanced Brackets');
+const { solve } = require("./Balanced Brackets");
 
-describe('Balanced Brackets', () => {
+describe("Balanced Brackets", () => {
   const examples = [
-
     {
-      query: '{[()]}',
-      answer: 'YES',
+      query: "{[()]}",
+      answer: "YES",
     },
 
     {
-      query: '{[(])}',
-      answer: 'NO',
+      query: "{[(])}",
+      answer: "NO",
     },
 
     {
-      query: '{{[[(())]]}}',
-      answer: 'YES',
+      query: "{{[[(())]]}}",
+      answer: "YES",
     },
-
   ];
 
   examples.forEach(({ query, answer }, i) => {

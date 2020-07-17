@@ -33,18 +33,18 @@ class Queue {
 }
 
 const processLine = (line, queue) => {
-  const [operation, value] = line.split(' ');
+  const [operation, value] = line.split(" ");
 
   switch (operation) {
-    case '1': {
+    case "1": {
       queue.enqueue(value);
       return null;
     }
-    case '2': {
+    case "2": {
       queue.dequeue();
       return null;
     }
-    case '3': {
+    case "3": {
       return queue.top();
     }
     default: {
@@ -56,10 +56,10 @@ const processLine = (line, queue) => {
 const solve = (input) => {
   const queue = new Queue();
   return input
-    .split('\n')
+    .split("\n")
     .slice(1)
-    .map(line => processLine(line, queue))
-    .filter(v => v !== null);
+    .map((line) => processLine(line, queue))
+    .filter((v) => v !== null);
 };
 
 module.exports = { solve };

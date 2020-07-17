@@ -18,5 +18,4 @@ First Element: ${arr[0]}
 Last Element: ${arr[length - 1]}`;
 };
 
-
 module.exports = { solve };

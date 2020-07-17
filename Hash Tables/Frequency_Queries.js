@@ -55,5 +55,4 @@ const solve = (queries) => {
   return result;
 };
 
-
 module.exports = { solve };

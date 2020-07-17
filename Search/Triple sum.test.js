@@ -1,6 +1,6 @@
-const { solve } = require('./Triple sum');
+const { solve } = require("./Triple sum");
 
-describe('Triple sum', () => {
+describe("Triple sum", () => {
   const examples = [
     {
       arrayA: [1, 3, 5],
@@ -16,9 +16,7 @@ describe('Triple sum', () => {
     },
   ];
 
-  examples.forEach(({
-    arrayA, arrayB, arrayC, answer,
-  }, i) => {
+  examples.forEach(({ arrayA, arrayB, arrayC, answer }, i) => {
     it(`should solve example ${i}`, () => {
       expect(solve(arrayA, arrayB, arrayC)).toEqual(answer);
     });

@@ -1,9 +1,12 @@
 {
-  "extends": "airbnb",
+  "parser": "babel-eslint",
+  "extends": ["airbnb", "plugin:prettier/recommended"],
   "env": {
+    "jest": true,
     "node": true,
-    "jest": true
+    "es2020": true
   },
+  "ignorePatterns": ["node_modules/"],
   "rules": {
     "no-plusplus": "off"
   }

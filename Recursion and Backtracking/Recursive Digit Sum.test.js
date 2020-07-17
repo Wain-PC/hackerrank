@@ -1,6 +1,6 @@
-const { solve } = require('./Recursive Digit Sum');
+const { solve } = require("./Recursive Digit Sum");
 
-describe('Recursive Digit Sum', () => {
+describe("Recursive Digit Sum", () => {
   const examples = [
     {
       query: [148, 3],
@@ -14,7 +14,6 @@ describe('Recursive Digit Sum', () => {
       query: [123, 3],
       answer: 9,
     },
-
   ];
 
   examples.forEach(({ query, answer }, i) => {

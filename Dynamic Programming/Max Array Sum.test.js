@@ -1,8 +1,7 @@
-const { solve } = require('./Max Array Sum');
+const { solve } = require("./Max Array Sum");
 
-describe('Max Array Sum', () => {
+describe("Max Array Sum", () => {
   const examples = [
-
     {
       query: [3, 7, 4, 6, 5],
       answer: 13,
@@ -17,7 +16,6 @@ describe('Max Array Sum', () => {
       query: [3, 5, -7, 8, 10],
       answer: 15,
     },
-
   ];
 
   examples.forEach(({ query, answer }, i) => {

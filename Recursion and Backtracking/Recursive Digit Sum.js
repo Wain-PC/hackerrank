@@ -3,7 +3,7 @@ const superDigit = (str, repeats) => {
   if (length === 1) {
     return str;
   }
-  const result = str.split('').reduce((acc, n) => acc + +n, 0) * repeats;
+  const result = str.split("").reduce((acc, n) => acc + +n, 0) * repeats;
   return superDigit(`${result}`, 1);
 };
 

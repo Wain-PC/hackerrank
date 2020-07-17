@@ -1,12 +1,12 @@
 const solve = (n, s) => {
   let count = 0;
-  let current = '';
+  let current = "";
   let same = 0;
   const { length } = s;
   for (let i = 0; i < length; i++) {
     if (s[i] !== current) {
       // 1+2+3+...+n
-      count += same * (same + 1) / 2;
+      count += (same * (same + 1)) / 2;
 
       // Special case for `aabaa` palindromes
       let pal = 0;
@@ -24,7 +24,7 @@ const solve = (n, s) => {
       same++;
     }
   }
-  count += same * (same + 1) / 2;
+  count += (same * (same + 1)) / 2;
 
   return count;
 };

@@ -17,7 +17,10 @@ const solve = (children) => {
     }
 
     // If it's a local maximum, we should take max of left and right and increase it by 1.
-    if ((children[index] > children[index - 1]) && (children[index] > children[index + 1])) {
+    if (
+      children[index] > children[index - 1] &&
+      children[index] > children[index + 1]
+    ) {
       candies[index] = Math.max(candies[index - 1], getCandies(index + 1)) + 1;
     }
 
@@ -36,7 +39,6 @@ const solve = (children) => {
     // Local minimum or same value as previous. Should always return 1.
     return candies[index];
   };
-
 
   return children.reduce((acc, value, index) => {
     if (!candies[index]) {

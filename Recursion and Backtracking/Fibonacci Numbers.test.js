@@ -1,6 +1,6 @@
-const { solve } = require('./Fibonacci Numbers');
+const { solve } = require("./Fibonacci Numbers");
 
-describe('Fibonacci Numbers', () => {
+describe("Fibonacci Numbers", () => {
   const examples = [
     {
       query: 3,

@@ -27,5 +27,4 @@ const solve = (arr, r) => {
   return num;
 };
 
-
 module.exports = { solve };

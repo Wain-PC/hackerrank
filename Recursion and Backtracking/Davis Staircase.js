@@ -28,5 +28,5 @@ const climb = memo((stairsLeft, stepsCanTake) => {
   return sum;
 });
 
-const solve = input => climb(input, 3);
+const solve = (input) => climb(input, 3);
 module.exports = { solve };

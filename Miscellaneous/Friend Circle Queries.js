@@ -1,4 +1,3 @@
-
 const solve = (queries) => {
   const people = {};
   const maxCircles = [];
@@ -35,15 +34,17 @@ const solve = (queries) => {
     const keys = Object.keys(people);
 
     // Step 2. Invalidate the hash.
-    keys.forEach((person) => { people[person].visited = false; });
+    keys.forEach((person) => {
+      people[person].visited = false;
+    });
 
     // Step 4. Select max graph length of the current step.
     maxCircles.push(
       Math.max(
         walk(p1),
         walk(p2),
-        maxCircles.length ? maxCircles[maxCircles.length - 1] : 0,
-      ),
+        maxCircles.length ? maxCircles[maxCircles.length - 1] : 0
+      )
     );
   });
 
@@ -136,4 +137,4 @@ const solveBetter = (queries) => {
   return maxCircles;
 };
 
-module.exports = { solve: solveBetter };
+module.exports = { solve, solveBetter };

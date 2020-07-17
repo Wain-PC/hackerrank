@@ -44,5 +44,4 @@ const solve = (expenditure, d) => {
   return notifications;
 };
 
-
 module.exports = { solve };

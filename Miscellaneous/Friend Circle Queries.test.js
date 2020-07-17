@@ -1,6 +1,6 @@
-const { solve } = require('./Friend Circle Queries');
+const { solve } = require("./Friend Circle Queries");
 
-describe('Friend Circle Queries', () => {
+describe("Friend Circle Queries", () => {
   const examples = [
     {
       query: [

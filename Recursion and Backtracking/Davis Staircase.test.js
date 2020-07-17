@@ -1,8 +1,7 @@
-const { solve } = require('./Davis Staircase');
+const { solve } = require("./Davis Staircase");
 
-describe('Davis Staircase', () => {
+describe("Davis Staircase", () => {
   const examples = [
-
     {
       query: 1,
       answer: 1,
@@ -22,7 +21,6 @@ describe('Davis Staircase', () => {
       query: 36,
       answer: 2082876103,
     },
-
   ];
 
   examples.forEach(({ query, answer }, i) => {

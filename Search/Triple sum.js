@@ -9,7 +9,7 @@ const unique = (arr) => {
   }, []);
 };
 
-const sort = arr => arr.sort((a, b) => a - b);
+const sort = (arr) => arr.sort((a, b) => a - b);
 
 const pairs = (sampleArr, targetArr) => {
   const counters = {};
@@ -36,7 +36,10 @@ const solve = (arrayA, arrayB, arrayC) => {
   const pairsA = pairs(uniqueA, uniqueB);
   const pairsB = pairs(uniqueC, uniqueB);
 
-  return Object.keys(pairsA).reduce((acc, key) => acc + (pairsA[key] * pairsB[key]), 0);
+  return Object.keys(pairsA).reduce(
+    (acc, key) => acc + pairsA[key] * pairsB[key],
+    0
+  );
 };
 
 module.exports = { solve };

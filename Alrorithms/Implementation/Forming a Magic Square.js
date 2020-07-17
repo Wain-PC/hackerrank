@@ -35,7 +35,7 @@ const permutations = (arr) => {
 // Check every row, column and both diagonals
 const checkIfMagicSquare = (arr) => {
   const l = Math.sqrt(arr.length);
-  const sum = l * (l * l + 1) / 2;
+  const sum = (l * (l * l + 1)) / 2;
   for (let i = 0; i < l; i++) {
     let rowSum = 0;
     let columnSum = 0;
@@ -51,7 +51,6 @@ const checkIfMagicSquare = (arr) => {
     }
   }
 
-
   // Check diagonals
   let leftDiagonal = 0;
   let rightDiagonal = 0;
@@ -63,13 +62,13 @@ const checkIfMagicSquare = (arr) => {
   return !(leftDiagonal !== sum || rightDiagonal !== sum);
 };
 
-const generateArray = n => Array.from(Array(n + 1).keys()).slice(1);
+const generateArray = (n) => Array.from(Array(n + 1).keys()).slice(1);
 
-const findAllMagicSquares = n => permutations(generateArray(n * n))
-  .filter(checkIfMagicSquare);
+const findAllMagicSquares = (n) =>
+  permutations(generateArray(n * n)).filter(checkIfMagicSquare);
 
-const calculateDiff = (target, magicSquare) => magicSquare
-  .reduce((acc, n, i) => acc + Math.abs(n - target[i]), 0);
+const calculateDiff = (target, magicSquare) =>
+  magicSquare.reduce((acc, n, i) => acc + Math.abs(n - target[i]), 0);
 
 const flatten = (arr) => {
   const output = [];
@@ -94,7 +93,9 @@ const magicSquares = findAllMagicSquares(3);
 
 const solve = (s) => {
   const query = flatten(s);
-  const diffs = magicSquares.map(magicSquare => calculateDiff(query, magicSquare));
+  const diffs = magicSquares.map((magicSquare) =>
+    calculateDiff(query, magicSquare)
+  );
   return Math.min(...diffs);
 };
 module.exports = { solve };

@@ -15,7 +15,7 @@ const solve = (str, substr) => {
   // If substr is empty, we can return true until there're no uppercase characters in the string.
   let hasUppercase = false;
   for (let i = 1; i <= ssl; i++) {
-    hasUppercase = hasUppercase || (str[i - 1].toUpperCase() === str[i - 1]);
+    hasUppercase = hasUppercase || str[i - 1].toUpperCase() === str[i - 1];
     T[i][0] = !hasUppercase;
   }
 
@@ -36,7 +36,10 @@ const solve = (str, substr) => {
       }
 
       // Case 3. Lowercase no match: must skip.
-      else if ((charStr.toUpperCase() !== charStr) && charStr.toUpperCase() !== charSubstr) {
+      else if (
+        charStr.toUpperCase() !== charStr &&
+        charStr.toUpperCase() !== charSubstr
+      ) {
         T[i][j] = T[i - 1][j];
       }
 
@@ -47,7 +50,7 @@ const solve = (str, substr) => {
     }
   }
 
-  return T[sl][ssl] ? 'YES' : 'NO';
+  return T[sl][ssl] ? "YES" : "NO";
 };
 
 module.exports = { solve };

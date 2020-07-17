@@ -3,29 +3,31 @@ const findDirection = (puzzle, word, startRowIndex, startColumnIndex) => {
   let success = true;
   for (let wordIndex = 0; wordIndex < word.length; wordIndex++) {
     const symbol = puzzle[startRowIndex + wordIndex]
-      ? puzzle[startRowIndex + wordIndex][startColumnIndex] : null;
-    if (!symbol || !(symbol === '-' || symbol === word[wordIndex])) {
+      ? puzzle[startRowIndex + wordIndex][startColumnIndex]
+      : null;
+    if (!symbol || !(symbol === "-" || symbol === word[wordIndex])) {
       success = false;
       break;
     }
   }
 
   if (success) {
-    return 'bottom';
+    return "bottom";
   }
 
   success = true;
   for (let wordIndex = 0; wordIndex < word.length; wordIndex++) {
     const symbol = puzzle[startRowIndex]
-      ? puzzle[startRowIndex][startColumnIndex + wordIndex] : null;
-    if (!symbol || !(symbol === '-' || symbol === word[wordIndex])) {
+      ? puzzle[startRowIndex][startColumnIndex + wordIndex]
+      : null;
+    if (!symbol || !(symbol === "-" || symbol === word[wordIndex])) {
       success = false;
       break;
     }
   }
 
   if (success) {
-    return 'right';
+    return "right";
   }
 
   return null;
@@ -34,11 +36,11 @@ const findDirection = (puzzle, word, startRowIndex, startColumnIndex) => {
 const putWordIntoPuzzle = (puzzle, word, direction, rowIndex, columnIndex) => {
   // Return new puzzle every time
   const newPuzzle = JSON.parse(JSON.stringify(puzzle));
-  if (direction === 'right') {
+  if (direction === "right") {
     for (let wordIndex = 0; wordIndex < word.length; wordIndex++) {
       newPuzzle[rowIndex][columnIndex + wordIndex] = word[wordIndex];
     }
-  } else if (direction === 'bottom') {
+  } else if (direction === "bottom") {
     for (let wordIndex = 0; wordIndex < word.length; wordIndex++) {
       newPuzzle[rowIndex + wordIndex][columnIndex] = word[wordIndex];
     }
@@ -52,10 +54,16 @@ const findFirstApplicableSymbol = (puzzle, word) => {
     const row = puzzle[rowIndex];
     for (let columnIndex = 0; columnIndex < row.length; columnIndex++) {
       const symbol = row[columnIndex];
-      if (symbol === '-' || symbol === word[0]) {
+      if (symbol === "-" || symbol === word[0]) {
         const direction = findDirection(puzzle, word, rowIndex, columnIndex);
         if (direction) {
-          return putWordIntoPuzzle(puzzle, word, direction, rowIndex, columnIndex);
+          return putWordIntoPuzzle(
+            puzzle,
+            word,
+            direction,
+            rowIndex,
+            columnIndex
+          );
         }
       }
     }
@@ -72,7 +80,7 @@ const solve = (puzzle, words) => {
     const word = words[i];
     const newPuzzle = findFirstApplicableSymbol(puzzle, word);
     if (newPuzzle) {
-      const newWords = words.filter(w => w !== word);
+      const newWords = words.filter((w) => w !== word);
       const result = solve(newPuzzle, newWords);
       if (result) {
         return result;

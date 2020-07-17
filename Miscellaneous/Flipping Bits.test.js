@@ -1,8 +1,7 @@
-const { solve, solveBitwise } = require('./Flipping Bits');
+const { solve, solveBitwise } = require("./Flipping Bits");
 
-describe('Flipping Bits', () => {
+describe("Flipping Bits", () => {
   const examples = [
-
     {
       query: 2147483647,
       answer: 2147483648,
@@ -15,7 +14,6 @@ describe('Flipping Bits', () => {
       query: 0,
       answer: 4294967295,
     },
-
   ];
 
   examples.forEach(({ query, answer }, i) => {

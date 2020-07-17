@@ -1,13 +1,11 @@
-const { solve } = require('./Kangaroo');
+const { solve } = require("./Kangaroo");
 
-describe('Kangaroo', () => {
+describe("Kangaroo", () => {
   const examples = [
-
     {
       query: [0, 3, 4, 2],
-      answer: 'YES',
+      answer: "YES",
     },
-
   ];
 
   examples.forEach(({ query, answer }, i) => {

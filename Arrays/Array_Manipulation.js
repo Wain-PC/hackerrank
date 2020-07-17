@@ -7,7 +7,7 @@ const solve = (n, queries) => {
   let tmp = 0;
   return arr.reduce((sum, v) => {
     tmp += v;
-    return (tmp > sum) ? tmp : sum;
+    return tmp > sum ? tmp : sum;
   }, 0);
 };
 

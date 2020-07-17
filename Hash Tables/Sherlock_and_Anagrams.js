@@ -1,20 +1,19 @@
 const solve = (s) => {
   const makeHash = (str) => {
-    const obj = str
-      .split('')
-      .reduce((acc, letter) => {
-        if (!acc[letter]) {
-          acc[letter] = 0;
-        }
-        acc[letter]++;
-        return acc;
-      }, {});
-    return Object.entries(obj).map(([k, v]) => `${k}:${v}`)
+    const obj = str.split("").reduce((acc, letter) => {
+      if (!acc[letter]) {
+        acc[letter] = 0;
+      }
+      acc[letter]++;
+      return acc;
+    }, {});
+    return Object.entries(obj)
+      .map(([k, v]) => `${k}:${v}`)
       .sort()
-      .join(',');
+      .join(",");
   };
 
-  const pairs = n => (n * (n - 1)) / 2;
+  const pairs = (n) => (n * (n - 1)) / 2;
 
   let n = 0;
   // Obviously, we don't need zero-length and string-length pieces

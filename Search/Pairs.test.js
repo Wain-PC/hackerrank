@@ -1,13 +1,11 @@
-const { solve } = require('./Pairs');
+const { solve } = require("./Pairs");
 
-describe('Pairs', () => {
+describe("Pairs", () => {
   const examples = [
-
     {
       query: [[1, 5, 3, 4, 2], 2],
       answer: 3,
     },
-
   ];
 
   examples.forEach(({ query, answer }, i) => {

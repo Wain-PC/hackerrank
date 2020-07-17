@@ -17,17 +17,17 @@ const solve = (s) => {
       if (arr[i] === 1 && !decrementUsed) {
         decrementUsed = true;
       } else {
-        return 'NO';
+        return "NO";
       }
     }
     if (diff === 1) {
       if (decrementUsed) {
-        return 'NO';
+        return "NO";
       }
       decrementUsed = true;
     }
   }
-  return 'YES';
+  return "YES";
 };
 
 module.exports = { solve };

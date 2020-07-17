@@ -1,8 +1,7 @@
-const { solve } = require('./Candies');
+const { solve } = require("./Candies");
 
-describe('Candies', () => {
+describe("Candies", () => {
   const examples = [
-
     {
       query: [1, 2, 2],
       answer: 4,
@@ -32,7 +31,6 @@ describe('Candies', () => {
       query: [11, 5, 11, 5, 2, 1],
       answer: 13,
     },
-
   ];
 
   examples.forEach(({ query, answer }, i) => {

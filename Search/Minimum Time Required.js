@@ -1,28 +1,27 @@
 const getMachines = (inputMachines) => {
-  const machines = inputMachines
-    .reduce((acc, machine) => {
-      if (!acc[machine]) {
-        acc[machine] = {
-          daysToProduce: machine,
-          n: 1,
-        };
-      } else {
-        acc[machine].n += 1;
-      }
+  const machines = inputMachines.reduce((acc, machine) => {
+    if (!acc[machine]) {
+      acc[machine] = {
+        daysToProduce: machine,
+        n: 1,
+      };
+    } else {
+      acc[machine].n += 1;
+    }
 
-      return acc;
-    }, {});
+    return acc;
+  }, {});
 
   const keys = Object.keys(machines).sort((a, b) => a - b);
 
   return { machines, keys };
 };
 
-
-const getItemsForDays = (machines, keys, days) => keys.reduce((acc, key) => {
-  const { daysToProduce, n } = machines[key];
-  return acc + Math.floor(days / daysToProduce) * n;
-}, 0);
+const getItemsForDays = (machines, keys, days) =>
+  keys.reduce((acc, key) => {
+    const { daysToProduce, n } = machines[key];
+    return acc + Math.floor(days / daysToProduce) * n;
+  }, 0);
 
 const getMinDays = (machines, keys, initialDays, goal) => {
   let days = initialDays + 1;

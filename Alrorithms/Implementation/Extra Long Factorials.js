@@ -2,11 +2,8 @@
 const multiplyStrings = (str1, str2) => {
   const cols = str1.length + str2.length;
   const rows = str2.length;
-  const matrix = Array.from(
-    Array(rows),
-    () => Array.from(
-      Array(cols), () => 0,
-    ),
+  const matrix = Array.from(Array(rows), () =>
+    Array.from(Array(cols), () => 0)
   );
 
   /* Step 1. Multiplication (creating matrix). */
@@ -17,7 +14,7 @@ const multiplyStrings = (str1, str2) => {
     for (let j = str1.length - 1; j >= 0; j--) {
       const jr = str1.length - 1 - j;
       const n1 = +str1[j];
-      let res = (n1 * n2) + excess;
+      let res = n1 * n2 + excess;
       if (res > 9) {
         excess = Math.floor(res / 10);
         res %= 10;
@@ -62,11 +59,11 @@ const multiplyStrings = (str1, str2) => {
     output.shift();
   }
 
-  return output.join('');
+  return output.join("");
 };
 
 const solve = (n) => {
-  let res = '1';
+  let res = "1";
 
   for (let i = 1; i <= n; i++) {
     res = multiplyStrings(res, `${i}`);

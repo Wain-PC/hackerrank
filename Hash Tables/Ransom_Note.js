@@ -12,7 +12,9 @@ const solve = (magazine, note) => {
     }
     magHash[word]--;
     return true;
-  }) ? 'Yes' : 'No';
+  })
+    ? "Yes"
+    : "No";
 };
 
 module.exports = { solve };

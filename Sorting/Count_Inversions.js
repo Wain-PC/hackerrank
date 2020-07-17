@@ -14,7 +14,11 @@ const solve = (arr) => {
         i++;
       }
     }
-    ar.splice(left, right - left, ...tmp.concat(ar.slice(i, middle), arr.slice(j, right)));
+    ar.splice(
+      left,
+      right - left,
+      ...tmp.concat(ar.slice(i, middle), arr.slice(j, right))
+    );
   };
 
   const mergeSort = (ar, left = 0, right = ar.length - 1) => {
@@ -30,6 +34,5 @@ const solve = (arr) => {
   mergeSort(arr);
   return count;
 };
-
 
 module.exports = { solve };

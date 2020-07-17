@@ -18,7 +18,7 @@ const solve = (q) => {
 
         // If the number has been bribed > 2 times, immediately return `Too chaotic`.
         if (bribes[arr[j]] > 2) {
-          return 'Too chaotic';
+          return "Too chaotic";
         }
 
         // Swap the numbers.
